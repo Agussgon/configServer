@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port:  ${PORT:${SERVER_PORT:8080}}
 
 spring:
   application:
@@ -18,10 +18,11 @@ spring:
           uri: lb://api-movie
           predicates:
             - Path=/api/v1/movie/**
-	- id: api-serie
+        - id: api-serie
           uri: lb://api-serie
           predicates:
             - Path=/api/v1/series/**
+
 info:
   app:
     name: ${spring.application.name}
